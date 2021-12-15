@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using System.Xml;
-using System.Data;
+using System.Xml.Linq;
+//using XML_BD.Dados;
+using System.Linq;
 
 namespace WindowsFormsApp2
 {
@@ -12,6 +15,8 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
+        String appPath = @"C:\AudioClick\BaseTemp\DB.xml";
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -21,12 +26,13 @@ namespace WindowsFormsApp2
             if (checkFile == true)
             {
                 ReadAndLoadXML();
+                lblStatusBar.Text = "Le fichier XML a été chargé avec succès.";
             }
             else
             {
                 CreateNewXML();
-                ReadAndLoadXML();
-            }
+                ReadAndLoadXML();               
+            }           
 
         }
 
@@ -34,7 +40,7 @@ namespace WindowsFormsApp2
         {
             //Fonction pour créer le nouveau fichier XML sur le client.
 
-            XmlTextWriter writer = new XmlTextWriter(@"C:\AudioClick\BaseTemp\DB.xml", System.Text.Encoding.UTF8);
+            XmlTextWriter writer = new XmlTextWriter(appPath, System.Text.Encoding.UTF8);
             writer.WriteStartDocument(true);
             writer.Formatting = Formatting.Indented;
             writer.Indentation = 2;
@@ -80,7 +86,7 @@ namespace WindowsFormsApp2
 
             //Lire le fichier et charger les champs.
 
-            XmlTextReader reader = new XmlTextReader(@"C:\AudioClick\BaseTemp\DB.xml");
+            XmlTextReader reader = new XmlTextReader(appPath);
 
             while (reader.Read())
             {
@@ -91,7 +97,16 @@ namespace WindowsFormsApp2
 
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "ordinateur")
                 {
-                    txtOrdinateur.Text = reader.ReadString();
+                    var ordinateur = reader.ReadString();
+
+                    if (ordinateur.ToUpper() == "SERVEUR")
+                    {
+                        cboOrdinateur.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cboOrdinateur.SelectedIndex = 1;
+                    }                
                 }
 
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "codeinstall")
@@ -112,7 +127,7 @@ namespace WindowsFormsApp2
         {
             // Vérifie si le fichier DB.xml existe sur l’ordinateur du client.
 
-            if (System.IO.File.Exists(@"C:\AudioClick\BaseTemp\DB.xml"))
+            if (System.IO.File.Exists(appPath))
             {
                 exist = true;
             }
@@ -123,7 +138,15 @@ namespace WindowsFormsApp2
             return exist;
         }
 
+        private void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+            // Enregistrer le fichier DB.xml
 
+
+
+
+
+        }
 
     }
 }
