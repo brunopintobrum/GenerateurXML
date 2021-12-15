@@ -60,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmXML.fr-CA.resx">
+      <DependentUpon>frmXML.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmXML.resx">
       <DependentUpon>frmXML.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,11 +95,6 @@
     </Content>
     <None Include="Resources\icons8-file-500.ico" />
     <Content Include="icons8-file-500.ico" />
-    <Content Include="XML.ico" />
-    <None Include="Resources\deletecolor16.png" />
-    <None Include="Resources\poweroff-40.png" />
-    <None Include="Resources\Exit1.png" />
-    <None Include="Resources\Exit.png" />
     <None Include="Resources\exit11.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

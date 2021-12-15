@@ -117,39 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Highlighter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="bindingNavigator1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>449, 17</value>
-  </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ckbTS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ckbTS.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt, style=Bold</value>
+  </data>
+  <data name="ckbTS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 24</value>
+  </data>
+  <data name="ckbTS.Text" xml:space="preserve">
+    <value>TS = 0</value>
+  </data>
   <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMtSURBVFhH7Vc7b9NQFO4vANo6DiJtkUC8BeIHFArJdVqp
-        6gBMjJ2ooMpEBagsZcsAIx2ABbJVNO0ECyqPP8BriCsh5Nquh6gZmjC0ycD9bq4dX/vmNklh6yd9kuVz
-        7nfOfZzj674D9IJfJ8hhR8uc3tCMqyCe8Y6b/w/s1MSQkzDu0WDLlm6YMsJGfe5uDE2m+LD9wxoZ7Xc0
-        Mk/5UxZURkdL/7ATmUe/j48d4TK9YXMgfZ7O6KMsSCe0deOLrU9c4nLdwdKzhjNofJcJd0Oq8c3RxwmX
-        7Qxe//gFR898lQn69LI5s7a6xohnmY9PTKTjlcCeY+lkQmFuTT8xG40GI55lPmHaOvnc0ZlwdDIfE0hm
-        mwy9UyYg8QdxMHkYOVipSU577dWqWSu8E96pEmD+Sx9iSaA6lCXqJshseAC4Nb0QBKo8fh56L08APoH/
-        TD547xN9goeLw9aMFWEAnUF93WJi9Z1d07s2E9jaJeCRGbO+W2+OccuSVcgs83Ai0EotnZTCzt5ULghS
-        XSwKQu0SAGsvVwJb+eacYEMMadt2B7NnRUfD3M6/DoS87KxgUyWAsvRt208Lgg10Bq+f4WFbwEcl6lgr
-        vA+E3JEpweZdvs0Cg3gO2+Drj4NG2Maopa/wsC3gZdRRlYCK7slwAmL1MCbIKA/bApYl6rj9rBAIRbdA
-        RWEL8m9idny+edgWZIewfGsuEKouLgkiKlZfFINx5Rv3I3ZSWh+YOMTDioh+690ULUNaShCq/9kxvbE7
-        ISE54YOSZWMsL16GSeMtDxcHLhxhZ7CSywezgaAqCRacJwxWZiWN6KiiEaFNol0Kg+gMasW1VhJ0dugJ
-        2GccTBDPWHZ/5mC7VmwNk2M8nBz4YIQHge7wpJDEXkRwjInq2AnygIdpD3wy8emMDsZssB3YBllQEDa2
-        7JGZg/R+8anji6vyQkLF0V5RXugTIDomO+2SwGBXFxIfuEbhOiUT7IY9Xcl8bA6Qc7Qy1mTCnRA3qw09
-        c5HL9QZ2JujBjFWHgs1rOXn4T39WWInSy0T7HxNScpL0x4TW+Z6ltl9gZujn/q+ZrZFTbdvrAZTo6/sL
-        FPiIEIntgX4AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANLSURBVEhLzVZLTBNRFB3dGhYa2mkNiVspK92aiNAZQD4b
+        jQsTN2wJGxNNTFyIS40LtwalG0lMQEzYSMLClUpC/FXUVkz6mTfTqRTaTn8zrVrfGd8j0+nwCWHhTW5e
+        3/2duffde0H4b6gpCEcyonws3TVwQgsM+XDiDjkzOTghiBocPJsW5ZspUX6e7AyvKKIcpb/f4g459AcC
+        awp3jqbEwR7FL8+kj/dmE6LcoMGbboYcesUvPUkGhkLwYyH2JuIPSykx/NEdlARH6vq1WzGcbl1K7P+Q
+        9EthFmJnwpcAIN7RW+HO8WDv7/jJ87/wO3P1NmlSwmnrqBz6bVvqlxTl/l3LhxI5M1BDI9X87KJmLLxK
+        4Z4dv5sCCE7cIc8/XdTU0HCV+9gZBfpDLGQrAV3xhyPcGADW6le9YhjV0txyAjI3COTQW6tfdNhzX8Un
+        PfbMxu4iPCI1IsHhemFuiVRKpVrxXkRJnBq1H94NAnnxfkSBXWF2icAPcsQhneEzLPQ/AirakXdRdmxi
+        s1IsG7XllZ8kOLr9yG4QMPS1pdcbsIcfZHbX+aQbLdlgsND33DE//UIr53JmZmDSfmDOXiDgzNgkgX3+
+        0UKGy2i8ecRlEIKACWaDZhvU1xIxg2RrPH3O2fEpBjLVAkJ8FyzY19fWY1yGgUVcBiEIWBVUEeUGDS33
+        vRYnW/zOWZcnNuqFYhqnWwd7+DlkUcRlEB6ZfF5HJhbx9VkOJzoXg3/UnismTqecdI6YBlHrVnSXTNib
+        zHODzYfPsuXcpqmPXVe4bDeGHezhx2VpvzTX8iZt3TVMuytvGOgaZ3d58XZ3bRkG/CDz7C6Qc04SXRcb
+        6HsMWvFBRNkJCHLoK0apWph9SeDHdHrbnICAim3KA6jdl01zJaoCCF+KkvA3wom7nQEFMN980tTTl0zu
+        S3mahW0nrGvsHm4MIDsjWjrUHI9b+6bmceKOEiEDJwAt+3stIHWzkO2ELYx17dzCKAFqjUet0+5pZHJx
+        6916DHfIHSVq/ug4V1bEgb62t/AirGtnRvthZAAAFmJvwpdgXWOb0gA67zo3M7lOeRol2lcGboITugTt
+        iDnCgNGA9t94zAHknl10EAIYBgsTfOj/rRwOCcJfEYjDbONfQlUAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="StyleManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>136, 17</value>
-  </metadata>
-  <metadata name="StyleManagerAmbient1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>269, 17</value>
-  </metadata>
+  <assembly alias="DevComponents.DotNetBar2" name="DevComponents.DotNetBar2, Version=12.2.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
+  <data name="panelEx6.HighlightColor" type="DevComponents.DotNetBar.Validator.eHighlightColor, DevComponents.DotNetBar2">
+    <value>None</value>
+  </data>
+  <data name="panelEx6.HighlightOnFocus" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panelEx6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 365</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panelEx6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="panelEx6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>519, 68</value>
+  </data>
+  <data name="panelEx6.TabIndex" type="System.Int32, mscorlib">
+    <value>953</value>
+  </data>
+  <data name="metroStatusBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 439</value>
+  </data>
+  <data name="panelEx5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>530, 466</value>
+  </data>
+  <data name="panelEx4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>532, 500</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>532, 500</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAAtFAAAZgAAAICAAAABACAAKAgBAJMUAABAQAAAAQAgAChCAAC7HAEAMDAAAAEA

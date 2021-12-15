@@ -63,19 +63,9 @@ namespace GenerateurXML.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap deletecolor16 {
+        public static System.Drawing.Bitmap exit11 {
             get {
-                object obj = ResourceManager.GetObject("deletecolor16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Exit {
-            get {
-                object obj = ResourceManager.GetObject("Exit", resourceCulture);
+                object obj = ResourceManager.GetObject("exit11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
