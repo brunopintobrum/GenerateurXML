@@ -168,22 +168,24 @@
             // ckbTS
             // 
             this.ckbTS.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.ckbTS.Location = new System.Drawing.Point(326, 160);
+            this.ckbTS.Location = new System.Drawing.Point(288, 160);
             this.ckbTS.Name = "ckbTS";
-            this.ckbTS.Size = new System.Drawing.Size(104, 24);
+            this.ckbTS.Size = new System.Drawing.Size(73, 24);
             this.ckbTS.TabIndex = 13;
-            this.ckbTS.Text = "0 = TS";
+            this.ckbTS.Text = "TS";
             this.ckbTS.UseVisualStyleBackColor = true;
+            this.ckbTS.CheckStateChanged += new System.EventHandler(this.ckbTS_CheckStateChanged);
             // 
             // ckbNouveau
             // 
             this.ckbNouveau.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.ckbNouveau.Location = new System.Drawing.Point(189, 160);
             this.ckbNouveau.Name = "ckbNouveau";
-            this.ckbNouveau.Size = new System.Drawing.Size(125, 24);
+            this.ckbNouveau.Size = new System.Drawing.Size(94, 24);
             this.ckbNouveau.TabIndex = 13;
-            this.ckbNouveau.Text = "Nouveau = -1";
+            this.ckbNouveau.Text = "Nouveau";
             this.ckbNouveau.UseVisualStyleBackColor = true;
+            this.ckbNouveau.CheckStateChanged += new System.EventHandler(this.ckbNouveau_CheckStateChanged);
             // 
             // txtCodeInstallation
             // 

@@ -20,6 +20,7 @@ namespace GenerateurXML
 
             // Variables globales du projet.
             public static bool checkFile;
+            public static string checkboxValue = "";
             public static string appPath = @"C:\AudioClick\BaseTemp\DB.xml";
 
         }
@@ -41,6 +42,8 @@ namespace GenerateurXML
                 CreateNewXML();
                 ReadAndLoadXML();
             }
+            VerifierCheckbox();
+            Global.checkboxValue = txtStation.Text;
         }
 
         public void CreateNewXML()
@@ -110,14 +113,13 @@ namespace GenerateurXML
         public void NettoyerChamps()
         {
             //Nettoyer les champs
-
+            ckbNouveau.Checked = false;
+            ckbTS.Checked = false;
             txtIP.Text = "";
             cboOrdinateur.SelectedIndex = -1;
             txtCodeInstallation.Text = "";
-            txtStation.Text = "";
-            ckbNouveau.Checked = false;
-            ckbTS.Checked = false;
             lblStatusBar.Text = "";
+            txtStation.Text = "";
 
         }
 
@@ -195,6 +197,7 @@ namespace GenerateurXML
 
             ReadAndLoadXML();
             Buttons(true);
+            VerifierCheckbox();
 
         }
 
@@ -212,6 +215,7 @@ namespace GenerateurXML
             SaveXML();
             NettoyerChamps();
             Buttons(false);
+            VerifierCheckbox();
 
             //CreationFileDLL();
 
@@ -230,6 +234,19 @@ namespace GenerateurXML
 
 
 
+        }
+
+        private void VerifierCheckbox()
+        {
+            //Vérifier l’état de l’outil Checkbox
+            if (txtStation.Text=="-1")
+            {
+                ckbNouveau.Checked = true;
+            }
+            else if (txtStation.Text == "0")
+            {
+                ckbTS.Checked = true;
+            }
         }
 
         private void Buttons(bool option)
@@ -295,6 +312,43 @@ namespace GenerateurXML
             {
                 e.Handled = true;
             }
+        }
+
+        private void ckbNouveau_CheckStateChanged(object sender, EventArgs e)
+        {
+
+
+            if (ckbNouveau.Checked == true)
+            {
+                ckbTS.Checked = false;
+                txtStation.Enabled = false;
+                txtStation.Text = "-1";
+
+            }
+            else
+            {
+                txtStation.Enabled = true;
+                txtStation.Text = Global.checkboxValue;
+            }
+
+        }
+
+        private void ckbTS_CheckStateChanged(object sender, EventArgs e)
+        {
+
+            if (ckbTS.Checked == true)
+            {
+                ckbNouveau.Checked = false;
+                txtStation.Enabled = false;
+                txtStation.Text = "0";
+
+            }
+            else
+            {
+                txtStation.Enabled = true;
+                txtStation.Text = Global.checkboxValue;
+            }
+
         }
     }
 }
