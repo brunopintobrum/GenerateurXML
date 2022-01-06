@@ -22,7 +22,7 @@ namespace GenerateurXML
             public static bool checkFile;
             public static string appPath = @"C:\AudioClick\BaseTemp\DB.xml";
 
-        }    
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -33,7 +33,8 @@ namespace GenerateurXML
             if (Global.checkFile == true)
             {
                 ReadAndLoadXML();
-                btnLire.Enabled = false;
+                Buttons(true);
+                //btnLire.Enabled = false;
             }
             else
             {
@@ -193,6 +194,7 @@ namespace GenerateurXML
         {
 
             ReadAndLoadXML();
+            Buttons(true);
 
         }
 
@@ -209,9 +211,41 @@ namespace GenerateurXML
 
             SaveXML();
             NettoyerChamps();
-            btnLire.Enabled = true;
+            Buttons(false);
+
+            //CreationFileDLL();
 
 
+
+        }
+
+        private void CreationFileDLL(string ordinateur, string codeinstal)
+        {
+            //var 
+            if (ordinateur == "SERVEUR")
+            {
+
+            }
+
+
+
+
+        }
+
+        private void Buttons(bool option)
+        {
+            switch (option)
+            {
+                case true:
+                    btnLire.Enabled = false;
+                    btnEnregistrer.Enabled = true;
+                    break;
+
+                case false:
+                    btnLire.Enabled = true;
+                    btnEnregistrer.Enabled = false;
+                    break;
+            }
         }
 
         private void MsgLeiture()
@@ -230,6 +264,37 @@ namespace GenerateurXML
         {
             lblStatusBar.Text = "Le fichier DB.xml a été créé avec succès. Veuillez entrer les champs, puis cliquez sur le bouton d’enregistrer.";
             MessageBox.Show("Le fichier DB.xml a été créé avec succès. Veuillez entrer les champs, puis cliquez sur le bouton d’enregistrer.");
+        }
+
+        private void txtCodeInstallation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtStation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '-'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '-') && ((sender as TextBox).Text.IndexOf('-') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

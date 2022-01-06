@@ -201,6 +201,7 @@
             this.txtCodeInstallation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.txtCodeInstallation.TabIndex = 12;
             this.txtCodeInstallation.Text = "";
+            this.txtCodeInstallation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodeInstallation_KeyPress);
             // 
             // cboOrdinateur
             // 
@@ -306,6 +307,7 @@
             this.txtStation.PreventEnterBeep = true;
             this.txtStation.Size = new System.Drawing.Size(286, 27);
             this.txtStation.TabIndex = 8;
+            this.txtStation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStation_KeyPress);
             // 
             // lblOrdinateur
             // 
