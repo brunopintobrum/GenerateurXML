@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Linq;
 using GenerateurXML.Data;
 using System.Linq;
+using System.IO;
 
 namespace GenerateurXML
 {
@@ -22,12 +23,12 @@ namespace GenerateurXML
             public static bool checkFile;
             public static string checkboxValue = "";
             public static string appPath = @"C:\AudioClick\BaseTemp\DB.xml";
+            public static string dllPath = @"C:\AudioClick\";
 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             Global.checkFile = false;
             Global.checkFile = CheckXmlExists(Global.checkFile);
 
@@ -187,7 +188,7 @@ namespace GenerateurXML
         }
 
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -203,6 +204,8 @@ namespace GenerateurXML
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
+            var ordinateur = cboOrdinateur.Text;
+            var codeInstall = txtCodeInstallation.Text;
 
             // Enregistrer le fichier DB.xml
 
@@ -217,29 +220,76 @@ namespace GenerateurXML
             Buttons(false);
             VerifierCheckbox();
 
-            //CreationFileDLL();
+            CreationFileDLL(ordinateur, codeInstall);
 
 
 
         }
 
-        private void CreationFileDLL(string ordinateur, string codeinstal)
+        private void CreationFileDLL(string ordinateur, string codeinstall)
         {
-            //var 
+            //Fonction de créer les fichiers dlls.
             if (ordinateur == "SERVEUR")
             {
+                //Appelle la fonction pour créer le fichier wct.dll
+                CreationWCT(codeinstall);
+            }
+            else // =STATION
+            {
+                //Appelle la fonction pour créer le fichier wcli.dll
+                CreationWCLI(codeinstall);
+            }
+        }
 
+        private void CreationWCT(string codeinstall)
+        {
+            //Fonction de création du fichier wct.dll
+            try
+            {
+                var path = Global.dllPath + "wct.dll";
+                using (FileStream fs = File.Create(path))
+                {
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.Write(codeinstall);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            MessageBox.Show("Le fichier wct.dll a été correctement créé");
+        }
+
+        private void CreationWCLI(string codeinstall)
+        {
+            //Fonction de création du fichier wcli.dll
+            try
+            {
+                var path = Global.dllPath + "wcli.dll";
+                using (FileStream fs = File.Create(path))
+
+                {
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.Write(codeinstall);
+                    }
+                }
             }
 
-
-
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            MessageBox.Show("Le fichier wcli.dll a été correctement créé");
         }
+
 
         private void VerifierCheckbox()
         {
             //Vérifier l’état de l’outil Checkbox
-            if (txtStation.Text=="-1")
+            if (txtStation.Text == "-1")
             {
                 ckbNouveau.Checked = true;
             }
