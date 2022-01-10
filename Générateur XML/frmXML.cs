@@ -29,151 +29,191 @@ namespace GenerateurXML
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Global.checkFile = false;
-            Global.checkFile = CheckXmlExists(Global.checkFile);
 
-            if (Global.checkFile == true)
+            try
             {
-                ReadAndLoadXML();
-                Buttons(true);
-                //btnLire.Enabled = false;
+                Global.checkFile = false;
+                Global.checkFile = CheckXmlExists(Global.checkFile);
+
+                if (Global.checkFile == true)
+                {
+                    ReadAndLoadXML();
+                    Buttons(true);
+                    //btnLire.Enabled = false;
+                }
+                else
+                {
+                    CreateNewXML();
+                    ReadAndLoadXML();
+                }
+                VerifierCheckbox();
+                Global.checkboxValue = txtStation.Text;
             }
-            else
+            catch (Exception ex)
             {
-                CreateNewXML();
-                ReadAndLoadXML();
+                MessageBox.Show(ex.Message);
             }
-            VerifierCheckbox();
-            Global.checkboxValue = txtStation.Text;
+
+
         }
 
         public void CreateNewXML()
         {
-            //Fonction pour créer le nouveau fichier XML sur le client.
+            try
+            {
+                //Fonction pour créer le nouveau fichier XML sur le client.
 
-            XmlTextWriter writer = new XmlTextWriter(Global.appPath, System.Text.Encoding.UTF8);
-            writer.WriteStartDocument(true);
-            writer.Formatting = Formatting.Indented;
-            writer.Indentation = 2;
-            writer.WriteStartElement("audioclicknet");
+                XmlTextWriter writer = new XmlTextWriter(Global.appPath, System.Text.Encoding.UTF8);
+                writer.WriteStartDocument(true);
+                writer.Formatting = Formatting.Indented;
+                writer.Indentation = 2;
+                writer.WriteStartElement("audioclicknet");
 
-            CreateNode("", "", "", "", writer);
+                CreateNode("", "", "", "", writer);
 
-            writer.WriteEndElement();
-            writer.WriteEndDocument();
-            writer.Close();
-            MsgCreation();
-
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+                writer.Close();
+                MsgCreation();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void SaveXML()
         {
-            //Fonction pour créer le nouveau fichier XML sur le client.
+            try
+            {
+                //Fonction pour créer le nouveau fichier XML sur le client.
+                XmlTextWriter writer = new XmlTextWriter(Global.appPath, System.Text.Encoding.UTF8);
+                writer.WriteStartDocument(true);
+                writer.Formatting = Formatting.Indented;
+                writer.Indentation = 2;
+                writer.WriteStartElement("audioclicknet");
 
-            XmlTextWriter writer = new XmlTextWriter(Global.appPath, System.Text.Encoding.UTF8);
-            writer.WriteStartDocument(true);
-            writer.Formatting = Formatting.Indented;
-            writer.Indentation = 2;
-            writer.WriteStartElement("audioclicknet");
+                CreateNode(txtIP.Text, cboOrdinateur.Text, txtCodeInstallation.Text, txtStation.Text, writer);
 
-            CreateNode(txtIP.Text, cboOrdinateur.Text, txtCodeInstallation.Text, txtStation.Text, writer);
-
-            writer.WriteEndElement();
-            writer.WriteEndDocument();
-            writer.Close();
-            MsgEnregistrer();
-
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+                writer.Close();
+                MsgEnregistrer();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void CreateNode(string ip, string ordinateur, string codeinstallation, string numerostation, XmlTextWriter writer)
         {
-            // Création des noeuds.
+            try
+            {
+                // Création des noeuds.
 
-            //Node IP
-            writer.WriteStartElement("ip");
-            writer.WriteString(ip);
-            writer.WriteEndElement();
+                //Node IP
+                writer.WriteStartElement("ip");
+                writer.WriteString(ip);
+                writer.WriteEndElement();
 
-            //Node Ordinateur
-            writer.WriteStartElement("ordinateur");
-            writer.WriteString(ordinateur);
-            writer.WriteEndElement();
+                //Node Ordinateur
+                writer.WriteStartElement("ordinateur");
+                writer.WriteString(ordinateur);
+                writer.WriteEndElement();
 
-            //Node Ordinateur
-            writer.WriteStartElement("codeinstall");
-            writer.WriteString(codeinstallation);
-            writer.WriteEndElement();
+                //Node Ordinateur
+                writer.WriteStartElement("codeinstall");
+                writer.WriteString(codeinstallation);
+                writer.WriteEndElement();
 
-            //Node Ordinateur
-            writer.WriteStartElement("numerostation");
-            writer.WriteString(numerostation);
-            writer.WriteEndElement();
-
+                //Node Ordinateur
+                writer.WriteStartElement("numerostation");
+                writer.WriteString(numerostation);
+                writer.WriteEndElement();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void NettoyerChamps()
         {
-            //Nettoyer les champs
-            ckbNouveau.Checked = false;
-            ckbTS.Checked = false;
-            txtIP.Text = "";
-            cboOrdinateur.SelectedIndex = -1;
-            txtCodeInstallation.Text = "";
-            lblStatusBar.Text = "";
-            txtStation.Text = "";
-
+            try
+            {
+                //Nettoyer les champs
+                ckbNouveau.Checked = false;
+                ckbTS.Checked = false;
+                txtIP.Text = "";
+                cboOrdinateur.SelectedIndex = -1;
+                txtCodeInstallation.Text = "";
+                lblStatusBar.Text = "";
+                txtStation.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void ReadAndLoadXML()
         {
-
-            //Lire le fichier et charger les champs.
-
-            XmlTextReader reader = new XmlTextReader(Global.appPath);
-
-            while (reader.Read())
+            try
             {
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "ip")
-                {
-                    txtIP.Text = reader.ReadString();
-                }
+                //Lire le fichier et charger les champs.
 
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "ordinateur")
-                {
-                    var ordinateur = reader.ReadString();
+                XmlTextReader reader = new XmlTextReader(Global.appPath);
 
-                    if (ordinateur.ToUpper() == "SERVEUR")
+                while (reader.Read())
+                {
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "ip")
                     {
-                        cboOrdinateur.SelectedIndex = 0;
+                        txtIP.Text = reader.ReadString();
                     }
-                    else
+
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "ordinateur")
                     {
-                        cboOrdinateur.SelectedIndex = 1;
+                        var ordinateur = reader.ReadString();
+
+                        if (ordinateur.ToUpper() == "SERVEUR")
+                        {
+                            cboOrdinateur.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            cboOrdinateur.SelectedIndex = 1;
+                        }
                     }
-                }
 
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "codeinstall")
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "codeinstall")
+                    {
+                        txtCodeInstallation.Text = reader.ReadString();
+                    }
+
+                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "numerostation")
+                    {
+                        txtStation.Text = reader.ReadString();
+                    }
+
+                }
+                reader.Close();
+                reader.Dispose();
+
+                if (Global.checkFile == true)
                 {
-                    txtCodeInstallation.Text = reader.ReadString();
+                    MsgLeiture();
                 }
-
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "numerostation")
-                {
-                    txtStation.Text = reader.ReadString();
-                }
-
             }
-            reader.Close();
-            reader.Dispose();
-
-            if (Global.checkFile == true)
+            catch (Exception ex)
             {
-                MsgLeiture();
+                MessageBox.Show(ex.Message);
             }
         }
 
         public bool CheckXmlExists(bool exist)
         {
+
             // Vérifie si le fichier DB.xml existe sur l’ordinateur du client.
 
             if (System.IO.File.Exists(Global.appPath))
@@ -204,42 +244,75 @@ namespace GenerateurXML
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            var ordinateur = cboOrdinateur.Text;
-            var codeInstall = txtCodeInstallation.Text;
-
-            // Enregistrer le fichier DB.xml
-
-            if (txtIP.Text == "" || cboOrdinateur.Text == "" || txtCodeInstallation.Text == "" || txtStation.Text == "")
+            try
             {
+                var ordinateur = cboOrdinateur.Text;
+                var codeInstall = txtCodeInstallation.Text;
+
+                // Enregistrer le fichier DB.xml
+
+                if (txtIP.Text == "")
+                {
+                    MessageBox.Show("Le champ numéro IP doit être rempli");
+                    txtIP.Focus();
+                    return;
+                }
+                else if (cboOrdinateur.Text == "")
+                {
+                    MessageBox.Show("Le champ Odinateur doit être sélectionné.");
+                    cboOrdinateur.Focus();
+                    return;
+                }
+                else if (txtCodeInstallation.Text == "  .  .  .")
+                {
+                    MessageBox.Show("Le champ Code d'installation doit être rempli");
+                    txtCodeInstallation.Focus();
+                    return;
+                }
+                else if (txtStation.Text == "")
+                {
+                    MessageBox.Show("Le champ Numéro de la station doit être rempli");
+                    txtStation.Focus();
+                    return;
+                }
+
+
+                SaveXML();
                 NettoyerChamps();
-                return;
+                Buttons(false);
+                VerifierCheckbox();
+
+                CreationFileDLL(ordinateur, codeInstall);
             }
-
-            SaveXML();
-            NettoyerChamps();
-            Buttons(false);
-            VerifierCheckbox();
-
-            CreationFileDLL(ordinateur, codeInstall);
-
-
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CreationFileDLL(string ordinateur, string codeinstall)
         {
-            //Fonction de créer les fichiers dlls.
-            if (ordinateur == "SERVEUR")
-            {          
 
-                //Appelle la fonction pour créer le fichier wct.dll
-                CreationWCT(codeinstall);
-            }
-            else // =STATION
+            try
             {
-                //Appelle la fonction pour créer le fichier wcli.dll
-                CreationWCLI(codeinstall);
+                //Fonction de créer les fichiers dlls.
+                if (ordinateur == "SERVEUR")
+                {
+
+                    //Appelle la fonction pour créer le fichier wct.dll
+                    CreationWCT(codeinstall);
+                }
+                else // =STATION
+                {
+                    //Appelle la fonction pour créer le fichier wcli.dll
+                    CreationWCLI(codeinstall);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void CreationWCT(string codeinstall)
@@ -285,36 +358,54 @@ namespace GenerateurXML
             }
             MessageBox.Show("Le fichier wcli.dll a été correctement créé");
         }
-          
 
-                     
+
+
         private void VerifierCheckbox()
         {
-            //Vérifier l’état de l’outil Checkbox
-            if (txtStation.Text == "-1")
+
+            try
             {
-                ckbNouveau.Checked = true;
+                //Vérifier l’état de l’outil Checkbox
+                if (txtStation.Text == "-1")
+                {
+                    ckbNouveau.Checked = true;
+                }
+                else if (txtStation.Text == "0")
+                {
+                    ckbTS.Checked = true;
+                }
             }
-            else if (txtStation.Text == "0")
+            catch (Exception ex)
             {
-                ckbTS.Checked = true;
+                MessageBox.Show(ex.Message);
             }
+
         }
 
         private void Buttons(bool option)
         {
-            switch (option)
+            try
             {
-                case true:
-                    btnLire.Enabled = false;
-                    btnEnregistrer.Enabled = true;
-                    break;
+                //Les conditions pour les Checkbox.
+                switch (option)
+                {
+                    case true:
+                        btnLire.Enabled = false;
+                        btnEnregistrer.Enabled = true;
+                        break;
 
-                case false:
-                    btnLire.Enabled = true;
-                    btnEnregistrer.Enabled = false;
-                    break;
+                    case false:
+                        btnLire.Enabled = true;
+                        btnEnregistrer.Enabled = false;
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void MsgLeiture()
