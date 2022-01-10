@@ -230,7 +230,8 @@ namespace GenerateurXML
         {
             //Fonction de créer les fichiers dlls.
             if (ordinateur == "SERVEUR")
-            {
+            {          
+
                 //Appelle la fonction pour créer le fichier wct.dll
                 CreationWCT(codeinstall);
             }
@@ -284,8 +285,9 @@ namespace GenerateurXML
             }
             MessageBox.Show("Le fichier wcli.dll a été correctement créé");
         }
+          
 
-
+                     
         private void VerifierCheckbox()
         {
             //Vérifier l’état de l’outil Checkbox
